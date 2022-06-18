@@ -36,8 +36,7 @@ public class WeixinArticlePageProcessor implements PageProcessor {
             page.addTargetRequest(url);
         }
         //处理分页
-        String nextpage = page.getHtml().css("div.wrapper>div.main-left>div.news-box>div.p-fy").$("a", "href").toString();
-        System.out.println(page.getHtml().css("nextPage"+"div.wrapper>div.main-left>div.news-box>div.p-fy").$("a", "href").toString());
+        String nextpage = page.getHtml().css("div.wrapper>div.main-left>div.news-box>div.p-fy").$("a.np", "href").toString();
         Request request=new Request("https://weixin.sogou.com/weixin"+nextpage);
         page.addTargetRequest(request);
         List<String> nextUrls = page.getHtml().css("div.wrapper>div.main-left>div.news-box>ul.news-list>li>div.txt-box>h3").$("a", "href").all();
